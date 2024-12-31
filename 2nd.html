@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading Animation</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Poppins:300,400");
+
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #fff;
+      font-family: "Poppins", sans-serif;
+      overflow: hidden;
+    }
+
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .loading h2 {
+      color: #000;
+      margin: 0 20px;
+    }
+
+    .loading .bar {
+      position: relative;
+      width: 400px;
+      height: 40px;
+      background: transparent;
+      border: 2px solid #000;
+      box-sizing: border-box;
+    }
+
+    .loading .bar:after {
+      content: "Loading...";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 10px;
+      text-align: center;
+      line-height: 36px;
+      color: #fff;
+      font-size: 20px;
+      mix-blend-mode: difference;
+    }
+
+    .loading .bar:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      transform-origin: left;
+      animation: animate 5s linear forwards;
+    }
+
+    @keyframes animate {
+      0% {
+        transform: scaleX(0);
+      }
+      100% {
+        transform: scaleX(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="loading">
+    <h2>2024</h2>
+    <div class="bar"></div>
+    <h2>2025</h2>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      window.location.href = "3rd.html";
+    }, 5000); 
+  </script>
+</body>
+</html>
