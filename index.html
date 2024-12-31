@@ -3,223 +3,224 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy New Year 2024</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <title>New Year 2025 Countdown</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(to bottom, #000428, #004e92);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: radial-gradient(circle, #000428, #004e92);
       color: white;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
     }
-    .container {
-      text-align: center;
-      padding: 20px;
-    }
-    header {
-      padding: 50px 20px;
-      background: linear-gradient(to bottom, #ff9966, #ff5e62);
-      color: white;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-      border-bottom: 5px solid #ff4500;
-    }
-    header h1 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 4rem;
-      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-      animation: glow 1.5s infinite alternate;
-    }
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 10px #ff9a8b, 0 0 20px #fecfef, 0 0 30px #fecfef;
-      }
-      to {
-        text-shadow: 0 0 20px #ff6b6b, 0 0 30px #ff6b6b, 0 0 40px #ff6b6b;
-      }
-    }
+
     #countdown {
-      margin: 40px 0;
+      font-size: 4rem;
+      text-align: center;
+      animation: pulse 1s infinite;
     }
-    .timer span {
-      font-size: 2.5rem;
-      font-weight: bold;
-      display: inline-block;
-      margin: 10px;
-      padding: 10px 25px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-    .message {
-      margin: 30px;
-      font-size: 1.8rem;
-      background: rgba(255, 255, 255, 0.2);
-      padding: 25px;
-      border-radius: 15px;
-      border: 2px solid #ff5e62;
-      animation: fadeIn 2s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-    #fireworks {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-    button {
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      color: white;
-      background: linear-gradient(45deg, #ff6a00, #ee0979);
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      transition: transform 0.2s, background 0.3s;
-    }
-    button:hover {
-      background: linear-gradient(45deg, #ee0979, #ff6a00);
-      transform: scale(1.1);
-    }
-    footer {
-      margin-top: 50px;
-      font-size: 1rem;
-      color: #ffcccb;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    }
-    .hearts {
-      position: fixed;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      pointer-events: none;
-      z-index: 10;
-    }
-    .card {
-      display: none;
-      margin-top: 20px;
-      background: rgba(255, 255, 255, 0.2);
-      border: 2px solid #ff5e62;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-    .card img {
-      max-width: 100%;
-      border-radius: 10px;
-    }
-    .heart {
-      position: absolute;
-      color: red;
-      font-size: 2rem;
-      animation: float 4s ease-in-out infinite;
-    }
-    @keyframes float {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
       }
       50% {
-        transform: translateY(-100px) scale(1.5);
-        opacity: 0.7;
+        transform: scale(1.1);
+      }
+    }
+
+    .firework {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, yellow, orange, red);
+      animation: explode 1.5s ease-out forwards;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    }
+
+    @keyframes explode {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
       }
       100% {
-        transform: translateY(-200px) scale(0.5);
         opacity: 0;
+        transform: translate(calc(var(--x) * 300px), calc(var(--y) * 300px)) scale(0.7);
       }
+    }
+
+    .spark {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: radial-gradient(circle, white, lightblue, transparent);
+      animation: sparkle 2s ease-out forwards;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+
+    @keyframes sparkle {
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(calc(var(--x) * 400px), calc(var(--y) * 400px)) scale(0.4);
+      }
+    }
+
+    .heart {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: red;
+      transform: rotate(45deg);
+      animation: fall 3s linear forwards;
+    }
+
+    .heart::before, .heart::after {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -5px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 5px;
+      top: 0;
+    }
+
+    @keyframes fall {
+      0% {
+        opacity: 1;
+        transform: translateY(0) rotate(45deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(45deg);
+      }
+    }
+
+    #giftButton {
+      display: none;
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      color: white;
+      background: #ff5733;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      animation: pulse 1s infinite;
+    }
+
+    #giftButton:hover {
+      background: #ff784e;
     }
   </style>
 </head>
 <body>
-  
-  <div class="container">
-    <!-- Banner -->
-    <header>
-      <h1>🎉 Happy New Year 2025! 🎉</h1>
-    </header>
-
-    <!-- Countdown Timer -->
-    <section id="countdown">
-      <h2>Countdown to Midnight</h2>
-      <div class="timer">
-        <span id="days">00</span> Days
-        <span id="hours">00</span> Hours
-        <span id="minutes">00</span> Minutes
-        <span id="seconds">00</span> Seconds
-      </div>
-    </section>
-
-    <!-- Personal Message -->
-    <section class="message">
-      <p>Dear [Love],</p>
-      <p>Wishing you a year filled with love, happiness, and success. ❤️</p>
-    </section>
-
-   <!-- Interactive Wish Button -->
-<button onclick="window.location.href='2nd.html'">Click for a New Year Surprise</button>
-
-    <!-- Fireworks Animation -->
-    <canvas id="fireworks"></canvas>
-  </div>
+  <div id="countdown">Loading...</div>
+  <button id="giftButton" onclick="openGift()">A small gift for you</button>
 
   <script>
-       // Countdown Timer Logic
-       const countdown = () => {
-        const now = new Date();
-        const newYear = new Date(now.getFullYear() + 1, 0, 1);
-        const diff = newYear - now;
-  
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-  
-        document.getElementById('days').innerText = days;
-        document.getElementById('hours').innerText = hours;
-        document.getElementById('minutes').innerText = minutes;
-        document.getElementById('seconds').innerText = seconds;
-  
-        if (diff <= 0) {
-          clearInterval(countdownInterval);
-          startHeartRain();
-        }
-      };
-  
-      const countdownInterval = setInterval(countdown, 1000);
-  
-      // Function to reveal the wish
-      function revealWish() {
-        document.getElementById('wish').style.display = 'block';
-        document.getElementById('card').style.display = 'block';
+    const countdownElement = document.getElementById('countdown');
+    const giftButton = document.getElementById('giftButton');
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const newYear = new Date('January 1, 2025 00:00:00').getTime();
+      const timeLeft = newYear - now;
+
+      if (timeLeft <= 0) {
+        countdownElement.textContent = '🎉 Happy New Year 2025! 🎆';
+        giftButton.style.display = 'block';
+        startFireworks();
+        startHeartRain();
+        clearInterval(interval);
+        return;
       }
-  
-      // Function to start heart rain effect
-      function startHeartRain() {
-        const heartContainer = document.querySelector('.hearts');
-        for (let i = 0; i < 30; i++) {
-          const heart = document.createElement('div');
-          heart.className = 'heart';
-          heart.innerHTML = '❤️';
-          heart.style.left = Math.random() * 100 + 'vw';
-          heart.style.animationDuration = Math.random() * 2 + 3 + 's';
-          heartContainer.appendChild(heart);
-          setTimeout(() => {
-            heart.remove();
-          }, 5000);
-        }
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    function createFirework(x, y) {
+      const firework = document.createElement('div');
+      firework.className = 'firework';
+      firework.style.setProperty('--x', x);
+      firework.style.setProperty('--y', y);
+      firework.style.left = `${window.innerWidth / 2}px`;
+      firework.style.top = `${window.innerHeight / 2}px`;
+      document.body.appendChild(firework);
+
+      for (let i = 0; i < 50; i++) {
+        createSpark(x, y);
       }
-    </script>
-    
+
+      setTimeout(() => firework.remove(), 2000);
+    }
+
+    function createSpark(x, y) {
+      const spark = document.createElement('div');
+      spark.className = 'spark';
+      spark.style.setProperty('--x', Math.random() * 2 - 1);
+      spark.style.setProperty('--y', Math.random() * 2 - 1);
+      spark.style.left = `${window.innerWidth / 2}px`;
+      spark.style.top = `${window.innerHeight / 2}px`;
+      document.body.appendChild(spark);
+
+      setTimeout(() => spark.remove(), 2000);
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = `${Math.random() * 100}vw`;
+      heart.style.top = `-10px`;
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 3000);
+    }
+
+    function startFireworks() {
+      setInterval(() => {
+        const x = Math.random() * 2 - 1; // Random between -1 and 1
+        const y = Math.random() * 2 - 1; // Random between -1 and 1
+        createFirework(x, y);
+      }, 200);
+    }
+
+    function startHeartRain() {
+      setInterval(() => {
+        createHeart();
+      }, 150);
+    }
+
+    function openGift() {
+      window.open('2nd.html', '_blank');
+    }
+
+    const interval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
 </body>
 </html>
